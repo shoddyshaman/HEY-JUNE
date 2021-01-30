@@ -9,14 +9,14 @@ insert into hey_users (
     state,
     zip_code
 ) values (
-    ${first_name}, 
-    ${last_name},
+    ${firstName}, 
+    ${lastName},
     ${email},
     ${hash},
-    ${address_1},
-    ${address_2},
+    ${address1},
+    ${address2},
     ${city},
     ${state},
-    ${zip_code}
+    ${zipCode}
 )
-returning first_name, last_name, email, address1, address2, city, state, zip_code;
+returning user_id, first_name, last_name, email, address_1, address_2, city, state, zip_code;
