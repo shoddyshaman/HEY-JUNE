@@ -18,5 +18,5 @@ insert into hey_users (
     ${city},
     ${state},
     ${zipCode}
-)
-returning user_id, first_name, last_name, email, address_1, address_2, city, state, zip_code;
+)returning user_id, first_name, last_name, email, address_1, address_2, city, state, zip_code;
+

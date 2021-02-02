@@ -14,7 +14,8 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt);
 
         const [newUser] = await db.users.register_user({firstName,lastName, email, hash, address1, address2, city, state, zipCode});
-
+        console.log(newUser)
+        await db.bag.add_bag({user_id:newUser.user_id})
         req.session.user = newUser;
         res.status(200).send(req.session.user);
     },
@@ -24,12 +25,12 @@ module.exports = {
 
         const [foundUser] = await db.users.check_user({email})
         if(!foundUser){
-            return res.status(401).send(alert('Account not found.Try a different email or register'))
+            return res.status(401).send('Account not found.Try a different email or register')
         }
 
         const authenticated = bcrypt.compareSync(password, foundUser.password);
         if(!authenticated){
-            res.status(403).send(alert('Incorrect password'))
+            res.status(403).send('Incorrect password')
         }
         delete foundUser.password;
         req.session.user = foundUser

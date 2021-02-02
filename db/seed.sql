@@ -36,8 +36,8 @@ create table bag (
     user_id int references hey_users(user_id) on delete cascade
 );
 
-create table bag_order (
-    bag_order_id serial primary key,
+create table bag_item (
+    bag_item_id serial primary key,
     bag_id int references bag(bag_id) on delete cascade,
     product_id int references products(product_id) on update cascade,
     quantity int,
