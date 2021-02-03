@@ -1,6 +1,8 @@
 *{
   padding:0px;
   margin:0px;
+  color:rgb(59, 59, 59);
+  
 }
 
 .App {
@@ -13,5 +15,13 @@ input {
   height: 25px;
   border-radius:6px;
   cursor: pointer;
+}
+
+button {
+  border: 1px solid rgb(141, 147, 241);
+  height: 20px;
+  border-radius:4px;
+  cursor: pointer;
+  width:60px;
 }
 
