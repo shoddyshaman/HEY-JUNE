@@ -40,16 +40,16 @@ const Register = (props) => {
         <div>
         <form className="register-form" >
             <h3>Register</h3>
-            First name: <input type="text" name="firstName" onChange={e => setFirstName(e.target.value)}/>
-            Last name: <input type="text" name="lastName" onChange={e => setLastName(e.target.value)}/>
-            Email: <input type="email" name="email" onChange={e => setEmail(e.target.value)}/>
-            Password: <input type="password" name="password" onChange={e => setPassword(e.target.value)}/>
-            Verify Password: <input type="varchar" name="verPassword" onChange={e => setVerPassword(e.target.value)}/>
-            Address 1: <input type="varchar" name="address1" onChange={e => setAddress1(e.target.value)}/>
-            Address 2: <input type="varchar" name="address2" onChange={e => setAddress2(e.target.value)}/>
-            City: <input type="text" name="city" onChange={e => setCity(e.target.value)}/>
-            State: <input type="text" name="state" onChange={e => setState(e.target.value)}/>
-            Zip Code: <input type="varchar" name="zipCode" onChange={e => setZipCode(e.target.value)}/>
+            First name <input type="text" name="firstName" onChange={e => setFirstName(e.target.value)}/>
+            Last name <input type="text" name="lastName" onChange={e => setLastName(e.target.value)}/>
+            Email <input type="email" name="email" onChange={e => setEmail(e.target.value)}/>
+            Password <input type="password" name="password" onChange={e => setPassword(e.target.value)}/>
+            Verify Password <input type="varchar" name="verPassword" onChange={e => setVerPassword(e.target.value)}/>
+            Address 1 <input type="varchar" name="address1" onChange={e => setAddress1(e.target.value)}/>
+            Address 2 <input type="varchar" name="address2" onChange={e => setAddress2(e.target.value)}/>
+            City <input type="text" name="city" onChange={e => setCity(e.target.value)}/>
+            State <input type="text" name="state" onChange={e => setState(e.target.value)}/>
+            Zip Code <input type="varchar" name="zipCode" onChange={e => setZipCode(e.target.value)}/>
             <button type="submit" onClick={handleRegister}>Register</button>
         </form>
         <p>Not a new User? <Link to="/">Login</Link> here</p>

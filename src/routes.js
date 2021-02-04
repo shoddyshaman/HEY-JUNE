@@ -9,6 +9,7 @@ import Home from './Components/Home/Home';
 import AboutUs from './Components/AboutUs/AboutUs';
 import Contact from './Components/Contact/Contact';
 import Bag from './Components/Bag/Bag';
+import AddProduct from './Components/Api/AddProduct';
 
 
 export default (
@@ -22,5 +23,6 @@ export default (
         <Route path="/aboutUs" component={AboutUs}/>
         <Route path="/contact" component={Contact}/>
         <Route path="/bag" component={Bag}/>
+        <Route path="/api/add-product" component={AddProduct}/>
     </Switch>
 )

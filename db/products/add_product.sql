@@ -5,9 +5,9 @@ insert into products (
     category,
     description
 ) values (
-    ${product_name},
+    ${productName},
     ${price},
-    ${product_img},
+    ${productImage},
     ${category},
     ${description}
 ) returning * ;

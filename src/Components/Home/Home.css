@@ -1,16 +1,16 @@
 .home-shop-wrapper {
     background-image: url(../../assets/IMG_1487.JPG);
-    height:610px;
+    height:800px;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-position: center center;
+    background-position: 50% 68%;
     background-size: cover;
 }
 
 .home-shop-wrapper button {
     position: relative;
-    right:330px;
-    top:420px;
+    right:420px;
+    top:520px;
 }
 
 .featured-products {

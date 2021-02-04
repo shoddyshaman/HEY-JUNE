@@ -1,14 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { clearUser } from '../../Redux/userReducer';
+import { setUser,clearUser } from '../../Redux/userReducer';
 import { connect } from 'react-redux';
+import { useEffect} from 'react'
 import './Header.css';
 
 
 const Header = (props) => {
     // console.log(props)
     const { user } = props;
+
+    useEffect(() => {
+        axios.get('/auth/me')
+        .then(res =>{
+            props.setUser(res.data)
+        })
+        .catch(err => console.error(err))
+    })
 
     const handleLogout = () => {
         axios.get('/auth/logout')
@@ -41,4 +50,4 @@ const mapStateToProps = reduxState => {
     }
 }
 
-export default connect(mapStateToProps,{ clearUser })(Header);
+export default connect(mapStateToProps,{ setUser,clearUser })(Header);
