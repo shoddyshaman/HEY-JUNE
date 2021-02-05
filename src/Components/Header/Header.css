@@ -7,12 +7,13 @@
     height:70px;
 }
 
-h1 {
+.header-container h1 {
     color: white;
     margin-left: 20px;
     font-family:Amatic SC;
     letter-spacing: 3px;
     font-size:40px;
+    
 }
 
 
@@ -22,4 +23,8 @@ h1 {
     color:white;
     text-transform: uppercase;
     opacity:0.75;
+}
+
+a:-webkit-any-link {
+    text-decoration:none;
 }

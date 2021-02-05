@@ -1,0 +1,27 @@
+.shop-main h4 {
+    margin:65px auto;
+}
+
+.shop-product img {
+    height:200px;
+}
+
+.shop-main-window {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.shop-product {
+    margin:20px 20px;
+    
+}
+
+.shop-product p{
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+.shop-product aside {
+    opacity: 0.75;
+}
+

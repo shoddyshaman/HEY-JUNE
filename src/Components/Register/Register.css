@@ -1,7 +1,7 @@
 .register-form {
     display: flex;
     flex-direction:column;
-    justify-content:center;
+    justify-content:flex-start;
     text-transform: uppercase;
     opacity:0.75;
     margin-top:50px;

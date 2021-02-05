@@ -17,7 +17,7 @@ const Header = (props) => {
             props.setUser(res.data)
         })
         .catch(err => console.error(err))
-    })
+    },[])
 
     const handleLogout = () => {
         axios.get('/auth/logout')
@@ -30,15 +30,16 @@ const Header = (props) => {
 
     return (
         <header className="header-container">
-            <h1>Hey June!</h1>
+            <h1><Link to="/home">Hey June!</Link></h1>
             <nav className="navbar-container">
+                <Link to="/home">Home</Link>
                 <Link to='/shop'>Shop</Link>
                 <Link to='/aboutUs'>About Us</Link>
                 <Link to='/Contact'>Contact</Link>
                 <Link to='/bag'>Bag</Link>
-                {user.hasOwnProperty('user_id') && (
+                {user.hasOwnProperty('user_id') ? (
                     <Link to='/' onClick={handleLogout}>Logout</Link>
-                )}
+                ): <Link to='/'>Login</Link>}
             </nav>
         </header>
     )

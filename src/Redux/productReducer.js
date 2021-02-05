@@ -25,9 +25,9 @@ export default function reducer(state = initialState, action){
 
     switch(type){
         case SET_PRODUCT:
-            return {...state, user: payload}
+            return {...state, products: payload}
         case CLEAR_PRODUCT:
-            return {...state, user: payload}
+            return {...state, products: payload}
         default:
             return state
     }
