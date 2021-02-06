@@ -41,5 +41,6 @@ create table bag_item (
     bag_id int references bag(bag_id) on delete cascade,
     product_id int references products(product_id) on update cascade,
     quantity int,
-    user_id int references hey_users(user_id) on delete cascade
+    user_id int references hey_users(user_id) on delete cascade,
+    size varchar(55)
 );

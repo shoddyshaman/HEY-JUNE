@@ -18,7 +18,7 @@ export default (
         <Route path="/home" component={Home}/>
         <Route path="/register" component={Register}/>
         <Route path="/shop" component={Shop}/>
-        <Route path="/product/:id" component={Product}/>
+        <Route path="/product/:product_id" component={Product}/>
         <Route path="/checkout" component={Checkout}/>
         <Route path="/aboutUs" component={AboutUs}/>
         <Route path="/contact" component={Contact}/>

@@ -7,9 +7,9 @@ module.exports = {
     },
     getProduct: async(req, res) => {
         const db = req.app.get('db');
-        const { pId } = req.params;
+        const { product_id } = req.params;
 
-        const product = await db.products.get_product(pId);
+        const [product] = await db.products.get_product(+product_id);
         res.status(200).send(product)
     },
     addProduct: async(req, res) => {
@@ -23,9 +23,9 @@ module.exports = {
     },
     deleteProduct: async(req, res) => {
         const db = req.app.get('db');
-        const { pId } = req.params;
+        const { product_id } = req.params;
 
-        const deleteProduct = await db.products.delete_product(pId)
+        await db.products.delete_product(+product_id)
         res.sendStatus(200)
     },
     updateProduct: async(req, res) => {

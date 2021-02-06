@@ -38,11 +38,11 @@ app.put('api/bag', bagCtrl.changeQty)
 app.delete('api/bag', bagCtrl.deleteItem)
 
 //Product Endpoints
-app.get('/api/product/:id', prodCtrl.getProduct)
+app.get('/api/product/:product_id', prodCtrl.getProduct)
 app.get('/api/products', prodCtrl.getProducts)
 app.post('/api/products', prodCtrl.addProduct)
-app.put('api/product/:id', prodCtrl.updateProduct)
-app.delete('api/product/:id', prodCtrl.deleteProduct)
+app.put('api/product/:product_id', prodCtrl.updateProduct)
+app.delete('api/product/:product_id', prodCtrl.deleteProduct)
 
 const aws = require('aws-sdk');
 

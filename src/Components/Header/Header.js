@@ -9,15 +9,15 @@ import './Header.css';
 
 const Header = (props) => {
     // console.log(props)
-    const { user } = props;
+    const { user,setUser } = props;
 
     useEffect(() => {
         axios.get('/auth/me')
         .then(res =>{
-            props.setUser(res.data)
+            setUser(res.data)
         })
         .catch(err => console.error(err))
-    },[])
+    },[setUser])
 
     const handleLogout = () => {
         axios.get('/auth/logout')

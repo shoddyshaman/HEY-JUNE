@@ -1,33 +1,34 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {setProduct} from '../../Redux/productReducer'
-import { useState, useEffect } from 'react';
+import {setProducts} from '../../Redux/productReducer';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Shop.css';
 
 
 const Shop = (props) => {
-    const { products, setProduct } = props;
+    const { products, setProducts } = props;
     
     useEffect(() => {
         axios.get('/api/products')
         .then(res =>{
-            setProduct(res.data)
+            setProducts(res.data)
         })
         .catch(err => console.log(err))
-    },[setProduct])
+    },[setProducts])
     
     return (
         <main className="shop-main">  
         <h4>We Hope you have a great shopping experience!</h4>
         <div className="shop-main-window">
             {products.map((product, index) => 
-                <div key={product.product_id} className="shop-product">
+                <Link to={`/product/${product.product_id}`}><div key={product.product_id} className="shop-product">
                     <img src={product.product_img} alt={product.product_name}/>
                     <p>{product.product_name}</p>
                     <p>${product.price}</p>
                     <aside>{product.description}</aside>
-                </div>
+                </div></Link>
             )}
         </div>
         </main>
@@ -40,4 +41,4 @@ const mapStateToProps = reduxState => {
     }
 }
 
-export default connect(mapStateToProps,{setProduct})(Shop);
+export default connect(mapStateToProps,{setProducts})(Shop);
