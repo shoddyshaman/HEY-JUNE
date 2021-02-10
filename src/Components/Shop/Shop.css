@@ -4,24 +4,38 @@
 
 .shop-product img {
     height:200px;
+    border-radius:4px;
 }
 
 .shop-main-window {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 
 .shop-product {
     margin:20px 20px;
-    
+    border:0.10px solid rgb(170, 170, 173);
+    border-radius:12px;
+    box-sizing: border-box;
+    padding:15px;
+    box-shadow:4px 4px 2px 1px rgba(0, 0, 255, .2);
 }
 
 .shop-product p{
     text-transform: uppercase;
-    opacity: 0.75;
+    
 }
 
 .shop-product aside {
     opacity: 0.75;
+    font-size:10px;
 }
+
+.shop-product select {
+    margin:10px auto;
+       
+}
+
+
 

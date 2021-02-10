@@ -19,6 +19,7 @@ export function clearBag(bag) {
     }
 }
 
+
 export default function reducer(state = initialState, action){
     const { type, payload } = action
 

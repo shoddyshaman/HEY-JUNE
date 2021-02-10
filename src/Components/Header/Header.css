@@ -28,3 +28,20 @@
 a:-webkit-any-link {
     text-decoration:none;
 }
+
+.header-container-login {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(141, 147, 241);
+    height:70px;
+    align-items: center;
+}
+
+.header-container-login h1 {
+    color: white;
+    margin-left: 20px;
+    font-family:Amatic SC;
+    letter-spacing: 3px;
+    font-size:40px;
+    
+}

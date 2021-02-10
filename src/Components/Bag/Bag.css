@@ -5,3 +5,34 @@
     letter-spacing: 3px;
     font-size:40px;
 }
+
+.bag-item {
+    margin:20px 20px;
+    border:0.10px solid rgb(170, 170, 173);
+    border-radius:12px;
+    box-sizing: border-box;
+    padding:15px;
+    box-shadow:4px 4px 2px 1px rgba(0, 0, 255, .2);
+    display:flex;
+}
+
+.bag-item img {
+    height:200px;
+}
+
+.bag-desc {
+    display:flex;
+    flex-flow: column wrap;
+    margin:20px;
+    justify-content: center;
+}
+
+.item-desc {
+    display:flex;
+    flex-flow: column wrap;
+    margin:20px;
+    justify-content: center;
+    padding:15px;
+}
+
+

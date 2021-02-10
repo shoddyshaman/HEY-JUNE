@@ -23,9 +23,9 @@ const Login = (props) => {
     return (
         <main className="login-container">
             <h3>Welcome Back Hooman!</h3>
-            <input value={email} onChange={e => setEmail(e.target.value)}/>
-            <input value={password} onChange={e => setPassword(e.target.value)}/>
-            <button onClick={handleLogin}>Lets Go!</button>
+            <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
+            <input placeholder="password" value={password} onChange={e => setPassword(e.target.value)}/>
+            <button onClick={handleLogin}>Lets Go!</button><br/>
             <p> New? <Link to="/register">Register</Link> here!</p>
         </main>
     )

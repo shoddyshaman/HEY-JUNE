@@ -3,20 +3,21 @@
     flex-direction:column;
     justify-content:flex-start;
     text-transform: uppercase;
-    opacity:0.75;
+    /* opacity:0.75; */
     margin-top:50px;
 }
 
-.register-form h3{
+.register-form h2{
     margin-bottom:20px;
-    opacity:unset;
+    opacity:none;
 }
 
 .register-form input {
-    width:150px;
+    width:350px;
     align-self:center;
     border-radius:6px;
     margin-bottom:20px;
+    padding:10px;
 }
 
 .register-form button {
