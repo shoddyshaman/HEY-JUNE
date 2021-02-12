@@ -5,8 +5,11 @@ const session = require('express-session')
 const authCtrl = require('./controllers/authController')
 const bagCtrl = require('./controllers/bagController')
 const prodCtrl = require('./controllers/productController')
+const invctrl = require('./controllers/invoiceController')
 const { SERVER_PORT,CONNECTION_STRING, SESSION_SECRET} = process.env
 const app = express()
+
+
 
 app.use(express.json())
 app.use(session({
@@ -35,7 +38,9 @@ app.get('/auth/me', authCtrl.getUser)
 app.get('/api/bag', bagCtrl.getBag)
 app.post('/api/bag/add',bagCtrl.addToBag)
 app.put('/api/bag', bagCtrl.updateBag)
-app.delete('/api/bag', bagCtrl.deleteItem)
+app.get('/api/bag/total/:bag_id', bagCtrl.getTotal)
+app.delete('/api/bag/:bag_id',bagCtrl.clearBag)
+app.delete('/api/bag/:bag_item_id', bagCtrl.deleteItem)
 
 //Product Endpoints
 app.get('/api/product/:product_id', prodCtrl.getProduct)
@@ -44,6 +49,41 @@ app.post('/api/products', prodCtrl.addProduct)
 app.put('/api/product/:product_id', prodCtrl.updateProduct)
 app.delete('/api/product/:product_id', prodCtrl.deleteProduct)
 
+//Invoice endpoints
+app.post('/api/invoice',invctrl.createInvoice)
+app.get('/api/invoice/:invoice_id',invctrl.getInvoice)
+
+
+//stripe
+const stripe = require('stripe')('sk_test_51IJM2nCrvY2fBYe0Aqf0szFyVaehKT0lKM9GuqnX5T5k4vHTtTgUM1Ytc6xyr1t02X4yAVZunH6xbwpHLlLfHjUx00YUGGNfNK')
+
+//stripe endpoints
+app.post('/create-checkout-session/:total', async (req, res) => {
+  const {total} = req.params
+  console.log(total)
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'T-shirt',
+          },
+          unit_amount: +total,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: 'http://localhost:3000/#/invoice',
+    cancel_url: 'https://example.com/cancel',
+  });
+
+  res.json({ id: session.id });
+});
+
+//AWS S3
 const aws = require('aws-sdk');
 
 const {

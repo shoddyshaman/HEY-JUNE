@@ -2,8 +2,10 @@ module.exports = {
     getBag: async(req, res) => {
        const db = req.app.get('db');
        const {user_id} = req.session.user;
-       
-       
+       if(!user_id){
+        return res.status(409).send("Please log in")
+       }
+    //    console.log(req.session.user)
        const bag = await db.bag.get_bag(user_id)
        res.status(200).send(bag)
     },
@@ -13,7 +15,7 @@ module.exports = {
         const {product_id, quantity,size} = req.body;
 
         // const uniqueProduct = await db.bag.check_bag(product_id)
-        const bag = await db.bag.add_to_bag([product_id,quantity,user_id,size])
+        const bag = await db.bag.add_to_bag({product_id,quantity,user_id,size})
         res.status(200).send(bag)
     },
     updateBag: async(req, res) => {
@@ -32,9 +34,24 @@ module.exports = {
     deleteItem: async(req, res) => {
         const db = req.app.get('db');
         const {user_id} = req.session.user;
-        const {product_id} = req.body;
+        const {bag_item_id} = req.params;
 
-        await db.bag.delete_item([product_id, user_id])
-        res.sendStatus(200)
+        await db.bag.delete_item({bag_item_id})
+        const updatedBag = await db.bag.get_bag(user_id)
+        res.status(200).send(updatedBag)
+    },
+    clearBag: async(req, res) => {
+        const db = req.app.get('db');
+        const { bag_id } = req.params
+
+        await db.bag.clear_bag({bag_id: +bag_id})
+        res.status(200).send([])
+    },
+    getTotal: async(req, res) => {
+        const db = req.app.get('db');
+        const { bag_id } = req.params
+        const [total] = await db.bag.get_total({bag_id: +bag_id})
+        // console.log(total)
+        res.status(200).send(total)
     }
 }

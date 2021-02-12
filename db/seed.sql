@@ -20,16 +20,29 @@ create table products (
     description varchar(255),
 );
 
+drop table if exists invoices
 create table invoices (
     invoice_id serial primary key,
-    user_id int references hey_users(user_id) on delete cascade,
-    billing_address_1 varchar(255),
-    billing_address_2 varchar(255),
-    billing_city varchar(55),
-    billing_state varchar(55),
-    billing_zip varchar(55),
-    billing_date timestamp
+    user_id int references hey_users(user_id),
+    bag_id int references bag(bag_id),
+    shipping_address_1 varchar(255),
+    shipping_address_2 varchar(255),
+    shipping_city varchar(55),
+    shipping_state varchar(55),
+    shipping_zip varchar(55),
+    total numeric,
+    created_date timestamp without time zone
 );
+
+create table invoice_item (
+    invoice_item_id serial primary key,
+    invoice_id int references invoices(invoice_id),
+    product_id int references products(product_id),
+    qty_ordered int,
+    size varchar(55)
+)
+
+
 
 create table bag (
     bag_id serial primary key,
@@ -42,5 +55,9 @@ create table bag_item (
     product_id int references products(product_id) on update cascade,
     quantity int,
     user_id int references hey_users(user_id) on delete cascade,
-    size varchar(55)
+    size varchar(55),
+    item_total numeric
 );
+
+alter table bag_item add constraint bag_item_uq unique (bag_id,product_id,size);
+alter table bag_item add item_total numeric;

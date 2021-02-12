@@ -14,7 +14,7 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt);
 
         const [newUser] = await db.users.register_user({firstName,lastName, email, hash, address1, address2, city, state, zipCode});
-        console.log(newUser)
+        // console.log(newUser)
         await db.bag.add_bag({user_id:newUser.user_id})
         req.session.user = newUser;
         res.status(200).send(req.session.user);
@@ -34,6 +34,7 @@ module.exports = {
         }
         delete foundUser.password;
         req.session.user = foundUser
+        // console.log(req.session.user)
         res.status(202).send(req.session.user)
     },
     logout: async(req, res) => {

@@ -1,2 +1,2 @@
 delete from bag_item
-where product_id = $1 and user_id = $2;
+where bag_item_id = ${bag_item_id};

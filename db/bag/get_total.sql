@@ -1,0 +1,1 @@
+select sum(item_total) from bag_item where bag_id = ${bag_id}
