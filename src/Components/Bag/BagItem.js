@@ -10,7 +10,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import "./Bag.css";
 
 const BagItem = (props) => {
-  const { item, setBag, clearBag } = props;
+  const { item, setBag } = props;
   const [quantity, setQuantity] = useState(item.quantity);
   const [size, setSize] = useState(item.size);
   const [isEditing, setIsEditing] = useState(false);
@@ -34,15 +34,7 @@ const BagItem = (props) => {
       .catch((err) => alert(err.response.data));
   };
 
-  const handleDelete = (item) => {
-    // console.log(item)
-    axios.delete(`/api/bag/${item.bag_item_id}`)
-    .then((res) => {
-      setBag(res.data)
-      console.log("hit")
-    })
-    .catch((err) => alert(err.response.data));
-  }
+  
 
   return (
     <div className="bag-item">
@@ -65,7 +57,7 @@ const BagItem = (props) => {
               onChange={e => setSize(e.target.value)}
             >
               <option defaultValue value="">
-                {item.size}
+                {/* {item.size} */}
               </option>
               <option value="1T">1T</option>
               <option value="2T">2T</option>
@@ -99,10 +91,10 @@ const BagItem = (props) => {
               Edit
             </Button>
             <Button
-            variant="contained"
+            variant="outlined"
             color="secondary"
             style={{ fontSize:"small",width:"80px",padding:"12px" }}
-            onClick={() => handleDelete(item)}
+            onClick={() => props.deleteFn(item)}
             startIcon={<DeleteIcon style={{fontSize:"19px",marginRight:"-8px"}}  />}>
               Remove 
             </Button>

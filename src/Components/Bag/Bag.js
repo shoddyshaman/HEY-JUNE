@@ -24,10 +24,18 @@ const Bag = (props) => {
   }, [setBag]);
   // console.log(bag);
 
-   
+  const handleDelete = (item) => {
+    // console.log(item)
+    axios.delete(`/api/bag_item/${item.bag_item_id}`)
+    .then((res) => {
+      setBag(res.data)
+      console.log(item.bag_item_id)
+    })
+    .catch((err) => alert(err.response.data));
+  } 
 
   const handleClick = async (event) => {
-    let total = 20000;
+    let total = 0;
     axios.get(`api/bag/total/${bag[0].bag_id}`)
     .then(async(res) => {
       total = res.data.sum
@@ -62,7 +70,7 @@ const Bag = (props) => {
     <div className="container-bag">
       <h1>Your Bag</h1>
       {bag[0]?bag?.map((item, index) => {
-        return <BagItem key={index} item={item} setBag={setBag} />;
+        return <BagItem key={index} deleteFn={handleDelete} item={item} setBag={setBag} />;
       }):null}
       <button role='link' onClick={handleClick}>Checkout</button>
     </div>

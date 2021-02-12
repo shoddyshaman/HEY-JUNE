@@ -22,23 +22,28 @@ module.exports = {
         const db = req.app.get('db');
         const {user_id} = req.session.user;
         const{ quantity, bag_item_id,size,bag_id,product_id } = req.body
-        
+        console.log(size)
         const bagCheck = await db.bag.check_bag({bag_id , product_id, size})
         if(bagCheck[0]){
+            console.log(bagCheck[0])
             return res.status(409).send("Item in size already available in Bag")
         }
         await db.bag.update_bag({quantity,size, bag_item_id})
         const updatedBag = await db.bag.get_bag(user_id)
         res.status(200).send(updatedBag)
     },
-    deleteItem: async(req, res) => {
+    deleteItem: (req, res) => {
         const db = req.app.get('db');
         const {user_id} = req.session.user;
         const {bag_item_id} = req.params;
 
-        await db.bag.delete_item({bag_item_id})
-        const updatedBag = await db.bag.get_bag(user_id)
-        res.status(200).send(updatedBag)
+        db.bag.delete_item({ bag_item_id})
+        .then(async() => {
+            const updatedBag = await db.bag.get_bag(user_id)
+            console.log(updatedBag)
+            res.status(200).send(updatedBag)
+        })
+        
     },
     clearBag: async(req, res) => {
         const db = req.app.get('db');

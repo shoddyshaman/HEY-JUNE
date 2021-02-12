@@ -40,7 +40,7 @@ app.post('/api/bag/add',bagCtrl.addToBag)
 app.put('/api/bag', bagCtrl.updateBag)
 app.get('/api/bag/total/:bag_id', bagCtrl.getTotal)
 app.delete('/api/bag/:bag_id',bagCtrl.clearBag)
-app.delete('/api/bag/:bag_item_id', bagCtrl.deleteItem)
+app.delete('/api/bag_item/:bag_item_id', bagCtrl.deleteItem)
 
 //Product Endpoints
 app.get('/api/product/:product_id', prodCtrl.getProduct)
@@ -70,13 +70,13 @@ app.post('/create-checkout-session/:total', async (req, res) => {
           product_data: {
             name: 'T-shirt',
           },
-          unit_amount: +total,
+          unit_amount: +total *100,
         },
         quantity: 1,
       },
     ],
     mode: 'payment',
-    success_url: 'http://localhost:3000/#/invoice',
+    success_url: 'http://localhost:3000/#/invoice?session_id={CHECKOUT_SESSION_ID}',
     cancel_url: 'https://example.com/cancel',
   });
 

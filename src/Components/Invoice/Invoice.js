@@ -17,7 +17,7 @@ const Invoice = (props) => {
       })
       .catch((err) => console.log(err));
   }, [setBag]);
-  console.log(bag)
+  console.log(props)
 
   useEffect(() => {
     if(bag[0]){
@@ -39,13 +39,16 @@ const Invoice = (props) => {
   const fName = invoiceInfo[0] ? invoiceInfo[0].first_name : null
   // const fName =  ternary?.first_name
   return (
-    <div>
-      <div>
+    <div className="main-container-invoice">
+      <div className="greeting-container">
         <h1>Hey {fName}! Thanks for your order!</h1>
         <p>
           We appreciate your business! If you have any questions, please email us  sample@email.com .
           Here are some details
         </p>
+      </div>
+      <div>
+        
       </div>
     </div>
   );
