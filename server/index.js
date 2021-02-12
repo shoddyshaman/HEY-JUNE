@@ -76,7 +76,7 @@ app.post('/create-checkout-session/:total', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: 'http://localhost:3000/#/invoice?session_id={CHECKOUT_SESSION_ID}',
+    success_url: 'https://www.heyjunekids.com/#/invoice?session_id={CHECKOUT_SESSION_ID}',
     cancel_url: 'https://example.com/cancel',
   });
 
